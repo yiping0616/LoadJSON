@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isNetworkAvailable(Context context) {
         ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = conMgr.getActiveNetworkInfo();
-        Log.d("CONNECT" , String.valueOf(info.isConnected()));
-        Log.d("AVAILABLE" , String.valueOf(info.isAvailable()));
         if(info!=null && info.isConnected() && info.isAvailable()){
             return true;}
         return  false;
