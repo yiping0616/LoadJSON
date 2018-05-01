@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         adapter = new ParkAdapter(this);
-        boolean networkConnect = isNetworkAvailable(this);
+        boolean networkConnect = isNetworkAvailable(this);//確認是否連線Network
         if(networkConnect){
-            new LoadTask().execute(FILE_URL);  //使用AsyncTask方法
+            new LoadTask().execute(FILE_URL);  //有連線，使用AsyncTask方法：下載String，Parse Jason，SetRecyclerView
         }
         else{
             new AlertDialog.Builder(this)
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(MainActivity.this , HistroyActivity.class));
+                            startActivity(new Intent(MainActivity.this , HistroyActivity.class));  //跳至HistoryActivity
                         }})
                     .show();
         }
@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(
-                        new Intent( MainActivity.this, HistroyActivity.class));
+                startActivity(new Intent( MainActivity.this, HistroyActivity.class)); //跳至HistoryActivity
             }
         });
     }
